@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberKey Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="language-selector">
+        <button onclick="changeLanguage('en')">EN</button>
+        <button onclick="changeLanguage('es')">ES</button>
+        <button onclick="changeLanguage('pt')">PT</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 data-i18n="title">CyberKey Generator</h1>
+            <div class="neon-line"></div>
+        </div>
+
+        <div class="key-types">
+            <button class="key-type" data-type="basic8" data-i18n="basic8">Basic 8</button>
+            <button class="key-type" data-type="basic10" data-i18n="basic10">Basic 10</button>
+            <button class="key-type" data-type="basic16" data-i18n="basic16">Basic 16</button>
+            <button class="key-type" data-type="strongNotAmbiguous" data-i18n="strongNotAmbiguous">Strong Not Ambiguous</button>
+            <button class="key-type" data-type="strong" data-i18n="strong">Strong</button>
+            <button class="key-type" data-type="high" data-i18n="high">High Security</button>
+            <button class="key-type" data-type="encryption256" data-i18n="encryption256">Encryption Key 256</button>
+            <button class="key-type" data-type="wep64" data-i18n="wep64">64 WEP</button>
+            <button class="key-type" data-type="wep128" data-i18n="wep128">128 WEP</button>
+            <button class="key-type" data-type="wep256" data-i18n="wep256">256 WEP</button>
+        </div>
+
+        <div class="key-display">
+            <div class="key-container">
+                <input type="text" id="generatedKey" readonly>
+                <button class="copy-btn" onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            <button class="generate-btn" onclick="generateKey()" data-i18n="generate">Generate</button>
+        </div>
+
+        <div class="tooltip" id="tooltip" data-i18n="copied">Copied!</div>
+
+        <div class="explanation-section">
+            <div class="neon-line"></div>
+            <h2 data-i18n="explanationTitle">Secure Password Generator</h2>
+            <p data-i18n="explanationText"></p>
+            
+            <h3 data-i18n="whyUseTitle">Why use a password generator?</h3>
+            <ul class="why-use-list"></ul>
+            
+            <p class="footer-text" data-i18n="footerText"></p>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
