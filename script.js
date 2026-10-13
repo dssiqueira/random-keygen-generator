@@ -13,58 +13,52 @@ document.querySelectorAll('.key-type').forEach(button => {
 // Initialize the first button as active
 document.querySelector('.key-type').classList.add('active');
 
+const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const DIGITS = '0123456789';
+const SYMBOLS = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+// No l/1/I/| or o/0/O look-alikes
+const NOT_AMBIGUOUS = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789' + SYMBOLS.replace('|', '');
+const HEX = '0123456789ABCDEF';
+const ALNUM = LOWER + UPPER + DIGITS;
+
+// WEP keys are hex: 64-bit = 40-bit key (10 hex), 128 = 104 (26), 256 = 232 (58).
+const KEY_TYPES = {
+    basic8:             { length: 8,  charset: ALNUM },
+    basic10:            { length: 10, charset: ALNUM },
+    basic16:            { length: 16, charset: ALNUM },
+    strongNotAmbiguous: { length: 16, charset: NOT_AMBIGUOUS },
+    strong:             { length: 16, charset: ALNUM + SYMBOLS },
+    high:               { length: 32, charset: ALNUM + SYMBOLS },
+    encryption256:      { length: 64, charset: HEX },   // 64 hex digits = 256 bits
+    wep64:              { length: 10, charset: HEX },
+    wep128:             { length: 26, charset: HEX },
+    wep256:             { length: 58, charset: HEX },
+};
+
+// Uniform random characters from the browser's CSPRNG (crypto.getRandomValues).
+// Rejection sampling avoids the modulo bias of `random % charset.length`.
 function generateRandomString(length, charset) {
+    const n = charset.length;
+    const limit = 256 - (256 % n);
+    const buffer = new Uint8Array(length * 2);
     let result = '';
-    for (let i = 0; i < length; i++) {
-        result += charset.charAt(Math.floor(Math.random() * charset.length));
+    while (result.length < length) {
+        crypto.getRandomValues(buffer);
+        for (let i = 0; i < buffer.length && result.length < length; i++) {
+            if (buffer[i] < limit) result += charset[buffer[i] % n];
+        }
     }
     return result;
 }
 
+function generate(type) {
+    const { length, charset } = KEY_TYPES[type];
+    return generateRandomString(length, charset);
+}
+
 function generateKey() {
-    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
-    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
-    const specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    const notAmbiguous = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    const hex = '0123456789ABCDEF';
-
-    let key = '';
-    
-    switch(selectedType) {
-        case 'basic8':
-            key = generateRandomString(8, lowercase + uppercase + numbers);
-            break;
-        case 'basic10':
-            key = generateRandomString(10, lowercase + uppercase + numbers);
-            break;
-        case 'basic16':
-            key = generateRandomString(16, lowercase + uppercase + numbers);
-            break;
-        case 'strongNotAmbiguous':
-            key = generateRandomString(16, notAmbiguous + specialChars);
-            break;
-        case 'strong':
-            key = generateRandomString(16, lowercase + uppercase + numbers + specialChars);
-            break;
-        case 'high':
-            key = generateRandomString(32, lowercase + uppercase + numbers + specialChars);
-            break;
-        case 'encryption256':
-            key = generateRandomString(32, lowercase + uppercase + numbers);
-            break;
-        case 'wep64':
-            key = generateRandomString(5, hex);
-            break;
-        case 'wep128':
-            key = generateRandomString(13, hex);
-            break;
-        case 'wep256':
-            key = generateRandomString(29, hex);
-            break;
-    }
-
-    document.getElementById('generatedKey').value = key;
+    document.getElementById('generatedKey').value = generate(selectedType);
 }
 
 function copyToClipboard() {

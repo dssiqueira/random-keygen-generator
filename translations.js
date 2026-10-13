@@ -15,12 +15,12 @@ const translations = {
         copied: 'Copied to clipboard!',
         select: 'Select key type',
         explanationTitle: 'Secure Password Generator',
-        explanationText: 'Our random password generation tool was designed to ensure maximum security in creating strong credentials that are difficult to crack. With an advanced algorithm, we generate unique combinations that include uppercase and lowercase letters, numbers, and special characters, making your passwords highly secure against cyber attacks.',
+        explanationText: 'Our random password generation tool was designed to ensure maximum security in creating strong credentials that are difficult to crack. Keys are generated right in your browser with its cryptographic random number generator (crypto.getRandomValues) — nothing is sent or stored anywhere.',
         whyUseTitle: 'Why use a password generator?',
         whyUseList: [
             '🔒 More security - Random passwords are more resistant to brute force attacks and leaks.',
             '⚡ Convenience - Generate complex passwords instantly, without having to create combinations manually.',
-            '🔑 Unique and customizable - Set the size and complexity level to meet your needs.'
+            '🔑 The right key for the job - Pick one of 10 types, from simple passwords to Wi-Fi (WEP) and 256-bit keys.'
         ],
         footerText: 'Protecting your accounts and data has never been easier. Generate your secure password now and protect your information!'
     },
@@ -40,14 +40,14 @@ const translations = {
         copied: '¡Copiado al portapapeles!',
         select: 'Selecciona el tipo de clave',
         explanationTitle: 'Generador de Contraseñas Seguras',
-        explanationText: 'Nuestra herramienta de generación de contraseñas aleatorias fue desarrollada para garantizar la máxima seguridad en la creación de credenciales fuertes y difíciles de descifrar. Con un algoritmo avanzado, generamos combinaciones únicas que incluyen letras mayúsculas y minúsculas, números y caracteres especiales, haciendo que tus contraseñas sean altamente seguras contra ataques cibernéticos.',
+        explanationText: 'Nuestra herramienta de generación de contraseñas aleatorias fue desarrollada para garantizar la máxima seguridad en la creación de credenciales fuertes y difíciles de descifrar. Las claves se generan en tu propio navegador con su generador criptográfico de números aleatorios (crypto.getRandomValues): nada se envía ni se guarda en ningún lugar.',
         whyUseTitle: '¿Por qué usar un generador de contraseñas?',
         whyUseList: [
             '🔒 Más seguridad - Las contraseñas aleatorias son más resistentes a ataques de fuerza bruta y filtraciones.',
             '⚡ Practicidad - Genera contraseñas complejas instantáneamente, sin necesidad de crear combinaciones manualmente.',
-            '🔑 Únicas y personalizables - Define el tamaño y nivel de complejidad para satisfacer tus necesidades.'
+            '🔑 La clave adecuada - Elige entre 10 tipos, desde contraseñas simples hasta claves Wi-Fi (WEP) y de 256 bits.'
         ],
-        footerText: '¡Proteger tus cuentas y datos nunca fue tan fácil. ¡Genera ahora tu contraseña segura y protege tu información!'
+        footerText: 'Proteger tus cuentas y datos nunca fue tan fácil. ¡Genera ahora tu contraseña segura y protege tu información!'
     },
     pt: {
         title: 'Gerador CyberKey',
@@ -65,12 +65,12 @@ const translations = {
         copied: 'Copiado para área de transferência!',
         select: 'Selecione o tipo de chave',
         explanationTitle: 'Gerador de Senhas Seguras',
-        explanationText: 'Nossa ferramenta de geração de senhas aleatórias foi desenvolvida para garantir a máxima segurança na criação de credenciais fortes e difíceis de serem quebradas. Com um algoritmo avançado, geramos combinações únicas que incluem letras maiúsculas e minúsculas, números e caracteres especiais, tornando suas senhas altamente seguras contra ataques cibernéticos.',
+        explanationText: 'Nossa ferramenta de geração de senhas aleatórias foi desenvolvida para garantir a máxima segurança na criação de credenciais fortes e difíceis de serem quebradas. As chaves são geradas no seu próprio navegador, com o gerador criptográfico de números aleatórios dele (crypto.getRandomValues): nada é enviado nem guardado em lugar nenhum.',
         whyUseTitle: 'Por que usar um gerador de senhas?',
         whyUseList: [
             '🔒 Mais segurança – Senhas aleatórias são mais resistentes a ataques de força bruta e vazamentos.',
             '⚡ Praticidade – Gere senhas complexas instantaneamente, sem precisar criar combinações manualmente.',
-            '🔑 Únicas e personalizáveis – Defina o tamanho e o nível de complexidade para atender às suas necessidades.'
+            '🔑 A chave certa pra cada uso – Escolha entre 10 tipos, de senhas simples a chaves de Wi-Fi (WEP) e de 256 bits.'
         ],
         footerText: 'Proteger suas contas e dados nunca foi tão fácil. Gere agora sua senha segura e proteja suas informações!'
     }
