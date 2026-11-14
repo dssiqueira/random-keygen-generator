@@ -111,3 +111,7 @@ Las claves WEP existen para routers antiguos que solo admiten WEP. WEP es insegu
 Made by [Douglas Siqueira](https://dsiqueira.com/sobre) · [dsiqueira.com](https://dsiqueira.com)
 
 </div>
+
+## License
+
+[MIT](LICENSE)
